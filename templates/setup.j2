@@ -1,0 +1,53 @@
+from univention.lib.umc import Client, ConnectionError, HTTPError
+import sys
+import time
+
+username = 'Administrator'
+password = '{{ rootpassword }}'
+master = '{{ hostname }}.{{ domainname }}'
+host = '{{ hostname }}.{{ domainname }}'
+setup = 'singlemaster'
+samba = '4'
+schoolOU = 'schule'
+
+params = {
+	'setup': setup,
+	'username': username,
+	'password': password,
+	'master': master,
+	'samba': samba,
+	'schoolOU': schoolOU,
+}
+
+client = Client(host, username, password, language='en-US')
+
+result = client.umc_command('schoolinstaller/install', params).result
+if result and not result.get('success', True):
+	print('ERROR: Failed to run installer! {}'.format(result))
+	sys.exit(1)
+
+print('=== INSTALLATION STARTED ===')
+status = {'finished': False}
+failcount = 0
+last_message = None
+while not status['finished']:
+	if failcount >= 1200:
+		print('ERROR: {} failed attempts - committing suicide'.format(failcount))
+		sys.exit(1)
+	try:
+		status = client.umc_command('schoolinstaller/progress').result
+		failcount = 0
+	except (HTTPError, ConnectionError) as exc:
+		failcount += 1
+		print('TRACEBACK {} in client.umc_command("schoolinstaller/progress"):\n{}'.format(failcount, exc))
+		time.sleep(1)
+	message = '%(component)s - %(info)s' % status
+	if last_message != message:
+		last_message = message
+		print(message)
+
+if len(status['errors']) > 0:
+	print('ERROR: installation failed - {}'.format(status))
+	sys.exit(1)
+
+sys.exit(0)

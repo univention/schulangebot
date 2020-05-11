@@ -1,0 +1,19 @@
+---
+- name: create profile for join
+  template:
+     src: "templates/profile.j2"
+     dest: "/var/cache/univention-system-setup/profile"
+  tags:
+    - join
+- name: run join
+  shell: "/usr/lib/univention-system-setup/scripts/setup-join.sh"
+  tags:
+    - join
+- name: copy password in file
+  copy: 
+    content: "{{ rootpassword }}"
+    dest: "/tmp/univention"
+
+
+
+

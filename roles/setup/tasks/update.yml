@@ -1,0 +1,6 @@
+---
+- name: update
+  shell: "univention-upgrade --ignoressh --ignoreterm \
+  --updateto=$(ucr get version/version)-99 --noninteractive"
+
+

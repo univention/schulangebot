@@ -1,0 +1,6 @@
+---
+- name: restart univention-management-console-server
+  service: name=univention-management-console-server state=restarted
+
+- name: restart univention-management-console-web-server
+  service: name=univention-management-console-web-server state=restarted
