@@ -1,0 +1,6 @@
+---
+hostname: 'vm'
+domainname: 'installer.tmp'
+basedn: 'dc=installer,dc=tmp'
+rootpassword: 'univention'
+ou: 'schule'

@@ -1,0 +1,20 @@
+---
+- name: install ucsschool app
+  shell: "univention-app install --skip-checks must_have_valid_license --noninteractive --username Administrator \
+  --pwdfile /tmp/univention ucsschool"
+  tags:
+    - ucsschool
+- name: 
+  template:
+     src: "templates/setup.j2"
+     dest: "/tmp/ucsschool.py"
+  tags:
+    - ucsschool
+- name: run join
+  shell:
+    cmd: "/usr/bin/python2.7 /tmp/ucsschool.py"
+  tags:
+    - ucsschool
+  notify:
+    - restart univention-management-console-server
+    - restart univention-management-console-web-server

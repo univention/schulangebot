@@ -1,0 +1,12 @@
+---
+- name: create license
+  template:
+    src: "templates/license.j2"
+    dest: "/tmp/ucs.license"
+  tags: license
+
+- name: install ucs license
+  shell:
+    cmd: univention-license-import /tmp/ucs.license && univention-license-check
+    executable: /bin/sh
+  tags: license
