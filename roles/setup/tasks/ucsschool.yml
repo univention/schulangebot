@@ -10,7 +10,7 @@
      dest: "/tmp/ucsschool.py"
   tags:
     - ucsschool
-- name: run join
+- name: run ucsschool installation
   shell:
     cmd: "/usr/bin/python2.7 /tmp/ucsschool.py"
   tags:

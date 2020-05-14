@@ -1,0 +1,18 @@
+---
+- name: generate import config
+  template:
+    src: "templates/user_import_http-api.j2"
+    dest: "/var/lib/ucs-school-import/configs/user_import_http-api.json"
+  tags: import
+
+- name: set import variables
+  shell:
+    cmd: "ucr set ucsschool/import/http_api/ALLOWED_HOSTS={{ domainname }} ucsschool/import/http_api/client/ssl_verify=false"
+  tags: import
+
+- name: add schuladmin to import group / Allow import
+  shell:
+    cmd: "univention-directory-manager groups/group modify \
+      --dn 'cn=schule-import-all,cn=groups,ou=schule,'$(ucr get ldap/base) \
+      --append users='uid=schuladmin,cn=admins,cn=users,ou=schule,'$(ucr get ldap/base)"
+  tags: import

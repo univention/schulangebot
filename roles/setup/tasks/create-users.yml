@@ -1,0 +1,19 @@
+---
+- name: create schuladmin
+  shell: "udm users/user create  \
+    --position cn=admins,cn=users,ou=schule,$(ucr get ldap/base) \
+    --set username=schuladmin \
+    --set lastname=Admin \
+    --set password=25oJZ3Gouw5QU \
+    --set description='Admin for schule' \
+    --set displayName='SchulAdmin' \
+    --append groups='cn=admins-schule,cn=ouadmins,cn=groups,'$(ucr get ldap/base) \
+    --append groups='cn=lehrer-schule,cn=groups,ou=schule,'$(ucr get ldap/base) \
+    --append groups='cn=Domain Users schule,cn=groups,ou=schule,'$(ucr get ldap/base) \
+    --set primaryGroup='cn=Domain Users schule,cn=groups,ou=schule,'$(ucr get ldap/base) \
+    --set school=schule \
+    --set ucsschoolRole=teacher:school:schule \
+    --set ucsschoolRole=school_admin:school:schule"
+  tags:
+    - create-users
+

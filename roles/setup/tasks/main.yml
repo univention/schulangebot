@@ -3,4 +3,6 @@
 - include_tasks: update.yml
 - include_tasks: import-license.yml
 - include_tasks: ucsschool.yml
+- include_tasks: create-users.yml
+- include_tasks: import-config.yml
 - include_tasks: apps.yml
