@@ -8,6 +8,10 @@ https://help.univention.com/t/schulangebot-powered-by-ucs-school-hosted-by-hoste
 - UCS is configured to use DHCP for the system, make sure the instance gets a valid network address
 - Internet access
 
+# Configuration
+
+- In vars/main.yml -> Public Domain
+
 # Run
 
 ansible-playbook site.yaml -i hosts-file
