@@ -2,7 +2,7 @@
 - name: create schuladmin
   shell: "udm users/user create  \
     --position cn=admins,cn=users,ou=schule,$(ucr get ldap/base) \
-    --set username=schuladmin \
+    --set username={{ nameschuladmin }} \
     --set lastname=Admin \
     --set password=25oJZ3Gouw5QU \
     --set description='Admin for schule' \

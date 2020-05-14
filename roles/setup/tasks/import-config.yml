@@ -14,5 +14,5 @@
   shell:
     cmd: "univention-directory-manager groups/group modify \
       --dn 'cn=schule-import-all,cn=groups,ou=schule,'$(ucr get ldap/base) \
-      --append users='uid=schuladmin,cn=admins,cn=users,ou=schule,'$(ucr get ldap/base)"
+      --append users=uid={{ nameschuladmin }},cn=admins,cn=users,ou=schule,$(ucr get ldap/base)"
   tags: import

@@ -4,4 +4,5 @@ domainname: 'installer.tmp'
 basedn: 'dc=installer,dc=tmp'
 rootpassword: 'univention'
 ou: 'schule'
-schuladmin: 'schuladmin'
+nameschuladmin: 'schuladmin'
+

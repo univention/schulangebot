@@ -14,5 +14,9 @@
   shell:
     cmd: "/usr/bin/univention-app install {{ item }} --username Administrator --noninteractive --pwdfile /tmp/univention"
   loop:
+    - letsencrypt
     - etherpad-lite
+    - rocketchat
+    - openid-connect-provider
+    - owncloud
   tags: apps
