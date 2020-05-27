@@ -10,3 +10,9 @@
     cmd: univention-license-import /tmp/ucs.license && univention-license-check
     executable: /bin/sh
   tags: license
+
+- name: wait until uuid/license is defined in ucr
+  wait_for:
+    path: /etc/univention/base.conf
+    search_regex: uuid/license
+  tags: license
