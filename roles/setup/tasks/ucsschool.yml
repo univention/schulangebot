@@ -1,7 +1,9 @@
 ---
 - name: install ucsschool app
-  shell: "univention-app install --skip-checks must_have_valid_license --noninteractive --username Administrator \
-  --pwdfile /tmp/univention ucsschool"
+  shell: "univention-app install ucsschool --skip-checks must_have_valid_license --noninteractive --username Administrator \
+  --pwdfile <(echo {{ rootpassword }})"
+  args:
+      executable: /bin/bash
   tags:
     - ucsschool
 - name: 
@@ -11,8 +13,9 @@
   tags:
     - ucsschool
 - name: run ucsschool installation
-  shell:
-    cmd: "/usr/bin/python2.7 /tmp/ucsschool.py"
+  shell: "/usr/bin/python2.7 /tmp/ucsschool.py"
+  args:
+    executable: /bin/bash
   tags:
     - ucsschool
   notify:

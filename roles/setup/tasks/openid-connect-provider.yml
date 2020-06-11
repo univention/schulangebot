@@ -1,0 +1,5 @@
+---
+- name: install openid-connect-provider from appstore
+  shell:
+    cmd: "/usr/bin/univention-app install openid-connect-provider --skip-checks must_have_valid_license --username Administrator --noninteractive --pwdfile <(echo {{ rootpassword }})"
+  tags: apps

@@ -1,0 +1,17 @@
+---
+- name: setup
+  hosts: all
+  gather_facts: no
+  vars_files:
+   - vars/main.yml
+  tasks:
+  - include_tasks: roles/setup/tasks/join.yml
+  - include_tasks: roles/setup/tasks/update.yml
+  - include_tasks: roles/setup/tasks/ucsschool.yml
+  - include_tasks: roles/setup/tasks/create-users.yml
+  - include_tasks: roles/setup/tasks/import-config.yml
+  - include_tasks: roles/setup/tasks/letsencrypt.yml
+  - include_tasks: roles/setup/tasks/univention-portal.yml
+  handlers:
+  - import_tasks: roles/setup/handlers/main.yml
+

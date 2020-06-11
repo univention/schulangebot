@@ -1,0 +1,18 @@
+---
+- name: install univention-portal from appstore
+  shell: "/usr/bin/univention-app install univention-portal --skip-checks must_have_valid_license --username Administrator --noninteractive --pwdfile <(echo {{ rootpassword }})"
+  args:
+    executable: /bin/bash
+  tags: apps
+- name: Copy background to remote host 
+  copy:
+     src: "ressources/Hintergrund-UCS-Portal.jpg"
+     dest: "/tmp/Hintergrund-UCS-Portal.jpg"
+  tags:
+    - ucsschool
+- name: add background to portal
+  shell: udm portals/portal modify --dn "cn=ucsschool_demo_portal,cn=portal,cn=portals,cn=univention,$(ucr get ldap/base)" --set background="$(base64 /tmp/Hintergrund-UCS-Portal.jpg)" --append displayName='"en_US" "Schulportal"' --append displayName='"de_DE" "Schulportal"'
+  args:
+    executable: /bin/bash
+  tags:
+    - ucsschool

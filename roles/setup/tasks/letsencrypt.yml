@@ -1,0 +1,6 @@
+---
+- name: install letsencrypt from appstore
+  shell: "/usr/bin/univention-app install letsencrypt --skip-checks must_have_valid_license --username Administrator --noninteractive --pwdfile <(echo {{ rootpassword }})"
+  args:
+    executable: /bin/bash
+  tags: apps
