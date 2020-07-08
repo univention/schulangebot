@@ -3,13 +3,13 @@
   shell: "univention-app install ucsschool --skip-checks must_have_valid_license --noninteractive --username Administrator \
   --pwdfile <(echo {{ rootpassword }})"
   args:
-      executable: /bin/bash
+    executable: /bin/bash
   tags:
     - ucsschool
-- name: 
+- name:
   template:
-     src: "templates/setup.j2"
-     dest: "/tmp/ucsschool.py"
+    src: "templates/setup.j2"
+    dest: "/tmp/ucsschool.py"
   tags:
     - ucsschool
 - name: run ucsschool installation

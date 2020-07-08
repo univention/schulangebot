@@ -3,7 +3,7 @@
   hosts: all
   gather_facts: no
   vars_files:
-   - vars/main.yml
+  - vars/main.yml
   tasks:
   - include_tasks: roles/setup/tasks/join.yml
   - include_tasks: roles/setup/tasks/update.yml
@@ -14,4 +14,3 @@
   - include_tasks: roles/setup/tasks/univention-portal.yml
   handlers:
   - import_tasks: roles/setup/handlers/main.yml
-

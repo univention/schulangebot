@@ -5,4 +5,3 @@ basedn: 'dc=installer,dc=tmp'
 rootpassword: 'univention'
 ou: 'schule'
 nameschuladmin: 'schuladmin'
-

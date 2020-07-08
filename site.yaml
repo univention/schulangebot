@@ -3,6 +3,6 @@
   hosts: all
   gather_facts: no
   vars_files:
-   - vars/main.yml
+    - vars/main.yml
   roles:
     - setup
