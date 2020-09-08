@@ -3,8 +3,8 @@
   reboot:
 - name: create profile for join
   template:
-     src: "templates/profile.j2"
-     dest: "/var/cache/univention-system-setup/profile"
+    src: "templates/profile.j2"
+    dest: "/var/cache/univention-system-setup/profile"
   tags:
     - join
 - name: run join
@@ -12,10 +12,6 @@
   tags:
     - join
 - name: copy password in file
-  copy: 
+  copy:
     content: "{{ rootpassword }}"
     dest: "/tmp/univention"
-
-
-
-

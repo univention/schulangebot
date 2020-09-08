@@ -16,4 +16,3 @@
     --set ucsschoolRole=school_admin:school:schule"
   tags:
     - create-users
-

@@ -1,7 +1,7 @@
 # Schulangebot
 https://help.univention.com/t/schulangebot-powered-by-ucs-school-hosted-by-hostern/14593
 
-# Requirments
+# Requirements
 
 - UCS ISO or Appliance Image (KVM, VMWare, VirtualBox, ec2) - https://www.univention.de/download/download-ucs/
 - UCS ISO needs to be installed an snapshotted and set to DHCP for the system

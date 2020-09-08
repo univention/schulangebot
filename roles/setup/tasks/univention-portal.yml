@@ -4,10 +4,10 @@
   args:
     executable: /bin/bash
   tags: apps
-- name: Copy background to remote host 
+- name: Copy background to remote host
   copy:
-     src: "ressources/Hintergrund-UCS-Portal.jpg"
-     dest: "/tmp/Hintergrund-UCS-Portal.jpg"
+    src: "resources/Hintergrund-UCS-Portal.jpg"
+    dest: "/tmp/Hintergrund-UCS-Portal.jpg"
   tags:
     - ucsschool
 - name: add background to portal
