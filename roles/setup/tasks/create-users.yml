@@ -13,6 +13,8 @@
     --set primaryGroup='cn=Domain Users schule,cn=groups,ou=schule,'$(ucr get ldap/base) \
     --set school=schule \
     --set ucsschoolRole=teacher:school:schule \
-    --set ucsschoolRole=school_admin:school:schule"
+    --set ucsschoolRole=school_admin:school:schule \
+    --append option=ucsschoolTeacher \
+    --append option=ucsschoolAdministrator"
   tags:
     - create-users
