@@ -14,7 +14,7 @@
     --set school=schule \
     --set ucsschoolRole=teacher:school:schule \
     --set ucsschoolRole=school_admin:school:schule \
-    --append option=ucsschoolTeacher \
-    --append option=ucsschoolAdministrator"
+    --append-option=ucsschoolTeacher \
+    --append-option=ucsschoolAdministrator"
   tags:
     - create-users
